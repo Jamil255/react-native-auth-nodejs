@@ -79,7 +79,8 @@ const loginControllers = async (req, res) => {
 
     return res.status(200).json({
       message: 'user successfully login',
-      token,
+        token,
+      email: user.email,
       status: true,
     })
   } catch (error) {

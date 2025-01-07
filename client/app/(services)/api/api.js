@@ -1,6 +1,5 @@
 import axios from 'axios'
 const loginUser = async (user) => {
-    console.log(user)
   const response = await axios.post(
     'http://localhost:8000/api/v1/user/login',
     user,
@@ -10,7 +9,6 @@ const loginUser = async (user) => {
       },
     }
   )
-  console.log(response)
 
   return response.data
 }
@@ -24,9 +22,8 @@ const registerUser = async (user) => {
       },
     }
   )
-  console.log(response)
 
   return response.data
 }
 
-export { loginUser, registerUser }
+export  { loginUser, registerUser }

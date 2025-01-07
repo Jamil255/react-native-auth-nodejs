@@ -2,15 +2,16 @@ import { Stack } from 'expo-router'
 import React from 'react'
 import { QueryClientProvider } from '@tanstack/react-query'
 import queryClient from './(services)/queryClient'
+import AppWrapper from './(redux)/AppWrapper'
+import { Provider } from 'react-redux'
+import store from './(redux)/store'
 const RootLayout = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="auth/login" options={{ headerShown: false }} />
-        <Stack.Screen name="auth/register" options={{ headerShown: false }} />
-      </Stack>
-    </QueryClientProvider>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <AppWrapper />
+      </QueryClientProvider>
+    </Provider>
   )
 }
 

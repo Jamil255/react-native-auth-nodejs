@@ -1,15 +1,14 @@
+import { useRouter } from 'expo-router'
 import React, { useEffect } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { logoutAction } from '../(redux)/slice/authSlice'
-import { useRouter } from 'expo-router'
 import { useDispatch, useSelector } from 'react-redux'
+import { logoutAction } from './(redux)/slice/authSlice'
 
 export default function Profile() {
   const router = useRouter()
   const dispatch = useDispatch()
   const state = useSelector((state) => state)
-  //   console.log(state?.user?.email);
-  //   console.log("user",user.email)
+  console.log(state)
 
   const handleLogout = () => {
     dispatch(logoutAction())
