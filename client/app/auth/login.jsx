@@ -12,8 +12,13 @@ import { LoginSchema } from '@/constants/index'
 import { router } from 'expo-router'
 import { useMutation } from '@tanstack/react-query'
 import { loginUser } from '../(services)/api/api.js'
+import { useDispatch, useSelector } from 'react-redux'
+import { loginAction } from '../(redux)/slice/authSlice.js'
 
 export default function Login() {
+  const dispatch = useDispatch()
+  const user = useSelector((state) => state.auth.user)
+  console.log(user)
   const mutation = useMutation({
     mutationFn: loginUser,
     mutationKey: ['login'],
@@ -27,7 +32,7 @@ export default function Login() {
         onSubmit={(values) => {
           mutation
             .mutateAsync(values)
-            .then((data) => console.log(data))
+            .then((data) => dispatch(loginAction(data)))
             .catch((error) => console.log(error.message))
           router.push('/(tabs)')
         }}
